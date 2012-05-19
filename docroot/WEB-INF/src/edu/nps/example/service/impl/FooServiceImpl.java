@@ -13,21 +13,26 @@
  */
 
 package edu.nps.example.service.impl;
-import com.liferay.portal.kernel.json.JSONException;
+
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
 
 import edu.nps.example.service.base.FooServiceBaseImpl;
 
 /**
  * The implementation of the foo remote service.
- *
+ * 
  * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link edu.nps.example.service.FooService} interface.
- *
+ * All custom service methods should be put in this class. Whenever methods are
+ * added, rerun ServiceBuilder to copy their definitions into the
+ * {@link edu.nps.example.service.FooService} interface.
+ * 
  * <p>
- * This is a remote service. Methods of this service are expected to have security checks based on the propagated JAAS credentials because this service can be accessed remotely.
+ * This is a remote service. Methods of this service are expected to have
+ * security checks based on the propagated JAAS credentials because this service
+ * can be accessed remotely.
  * </p>
- *
+ * 
  * @author kirk
  * @see edu.nps.example.service.base.FooServiceBaseImpl
  * @see edu.nps.example.service.FooServiceUtil
@@ -35,18 +40,17 @@ import edu.nps.example.service.base.FooServiceBaseImpl;
 public class FooServiceImpl extends FooServiceBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this interface directly. Always use {@link edu.nps.example.service.FooServiceUtil} to access the foo remote service.
+	 * 
+	 * Never reference this interface directly. Always use {@link
+	 * edu.nps.example.service.FooServiceUtil} to access the foo remote service.
 	 */
-	 public String print(String msg) {
- 		System.out.println("JTest message: " + msg);
- 		String returnVal = null;
- 		try {
- 			returnVal = JSONFactoryUtil.createJSONObject("{Message:" + msg + "}").toString();
- 		} catch (JSONException e) {
- 			e.printStackTrace();
- 		}
- 		return returnVal;
- 	}
- 	
+	public String print(String msg) {
+		System.out.println("JTest message: " + msg);
+		String returnVal = null;
+		JSONObject result = JSONFactoryUtil.createJSONObject();
+		result.put("Message", msg);
+		returnVal = result.toString();
+		return returnVal;
+	}
+
 }

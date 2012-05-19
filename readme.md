@@ -78,8 +78,7 @@ Like this,
     
 which seems to work.  Unauthenticated calls should not work
 
-    curl http://localhost:8080/jsonsw-example-portlet/api/jsonws/foo/print \
-          -utest@liferay.com:test \
+    curl http://localhost:8080/jsonsw-example-portlet/api/secure/jsonws/foo/print \
           -d msg='I want my Foo!'
 
     # reply
